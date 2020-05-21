@@ -24,10 +24,5 @@
     "jsonwebtoken": "^8.5.1",
     "moment-js": "^1.1.15",
     "mongoose": "^5.9.9"
-  },
-  "devServer": {
-    "historyApiFallback": true,
-    "contentBase": "./",
-    "hot": true
   }
 }
