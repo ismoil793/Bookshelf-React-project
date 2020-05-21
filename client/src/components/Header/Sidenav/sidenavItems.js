@@ -123,4 +123,6 @@ function mapStateToProps(state) {
    }
 }
 
-export default connect(mapStateToProps)(withRouter(SidenavItems));
+
+
+export default withRouter(connect(mapStateToProps)(SidenavItems));
