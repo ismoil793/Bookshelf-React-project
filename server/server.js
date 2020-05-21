@@ -4,6 +4,8 @@ const cookiesParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const config = require("./config/config").get(process.env.NODE_ENV); // in heroku it will be production ENV
 const app = express();
+const path = require("path");
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DATABASE, {
@@ -201,13 +203,10 @@ app.delete("/api/delete_book", (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-   // Exprees will serve up production assets
-   app.use(express.static('client/build'));
+   app.use(express.static(path.join(__dirname, '/../client/build')));
 
-   // Express serve up index.html file if it doesn't recognize route
-   const path = require('path');
    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+      res.sendFile(path.join(__dirname + '/../client/build/index.html'));
    });
 }
 // if (process.env.NODE_ENV === "production") {   // for production
