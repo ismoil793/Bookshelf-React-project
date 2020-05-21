@@ -64,6 +64,19 @@ class Register extends Component {
                });
             }
          }
+         if (this.props.user && !this.props.user.register) {
+            if (this.props.user.register === false) {
+               this.setState({error: "Error occurred please try again!"})
+            } else {
+               this.setState({
+                  name: "",
+                  lastname: "",
+                  email: "",
+                  password: "",
+                  error: ""
+               });
+            }
+         }
       }, 2000)
    };
 
@@ -82,6 +95,9 @@ class Register extends Component {
    render() {
 
       let user = this.props.user;
+
+      console.log(user)
+
       return (
           <div className="container">
              <div className="row">
