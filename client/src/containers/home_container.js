@@ -10,8 +10,8 @@ class HomeContainer extends Component {
    flag = false;
 
    componentDidMount() {
-      if (!this.props.books.list)
-         this.props.dispatch(getBooks(4, 0, "desc"));
+      // if (!this.props.books.list)
+      this.props.dispatch(getBooks(4, 0, "desc"));
       this.props.dispatch(getBooksCount());
    }
 

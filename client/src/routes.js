@@ -10,6 +10,7 @@ import UserPosts from "./components/admin/userPosts";
 import EditBook from "./containers/Admin/edit";
 import Register from "./containers/Admin/register";
 import Logout from "./components/admin/logout";
+import NotFound from "./components/404/NotFound";
 
 import Layout from "./hoc/layout";
 import Auth from "./hoc/auth";
@@ -27,6 +28,7 @@ const Routes = () => {
              <Route path="/user/user-reviews" exact component={Auth(UserPosts, true)}/>
              <Route path="/user/register" exact component={Auth(Register, null)}/>
              <Route path="/" exact component={Auth(Home, null)}/>
+             <Route path="*" exact component={Auth(NotFound, null)}/>
           </Switch>
        </Layout>
    );
