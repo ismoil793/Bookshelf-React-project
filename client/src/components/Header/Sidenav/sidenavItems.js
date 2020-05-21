@@ -26,7 +26,7 @@ const SidenavItems = (props) => {
          icon: "user-plus",
          text: "Add Admins",
          link: "/user/register",
-         restricted: true
+         restricted: false
       },
       {
          type: "navItem",

@@ -21,6 +21,8 @@ const {auth} = require("./middleware/auth");
 app.use(bodyParser.json());
 app.use(cookiesParser());
 
+app.use(express.static("client/build"));  // needed for production
+
 
 //-------------------------------------------------------------------------- GET //
 
@@ -196,6 +198,14 @@ app.delete("/api/delete_book", (req, res) => {
       res.json(true)
    })
 });
+
+
+if (process.env.NODE_ENV === "production") {   // for production
+   const path = require("path");
+   app.get("/*", (req, res) => {
+      res.sendfile(path.resolve(__dirname), "../client", "build", "index.html")
+   });
+}
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
