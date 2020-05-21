@@ -11,6 +11,7 @@ class HomeContainer extends Component {
 
    componentDidMount() {
       // if (!this.props.books.list)
+      // above statement had to be commented, since it caused bugs on home page
       this.props.dispatch(getBooks(4, 0, "desc"));
       this.props.dispatch(getBooksCount());
    }
