@@ -21,9 +21,7 @@ const {auth} = require("./middleware/auth");
 app.use(bodyParser.json());
 app.use(cookiesParser());
 
-// app.use(express.static("client/build"));  // needed for production
-let root = path.join(__dirname, 'client', 'build');
-app.use(express.static(root));
+app.use(express.static("client/build"));  // needed for production
 
 
 //-------------------------------------------------------------------------- GET //
@@ -202,21 +200,12 @@ app.delete("/api/delete_book", (req, res) => {
 });
 
 
-
-
-app.use(function(req, res, next) {
-   if (req.method === 'GET' && req.accepts('html') && !req.is('json') &&
-       !req.path.includes('.')) {
-      res.sendFile('index.html', { root });
-   } else next();
-});
-
-// if (process.env.NODE_ENV === "production") {   // for production
-//    const path = require("path");
-//    app.get("/*", (req, res) => {
-//       res.sendfile(path.resolve(__dirname), "../client", "build", "index.html")
-//    });
-// }
+if (process.env.NODE_ENV === "production") {   // for production
+   const path = require("path");
+   app.get("/*", (req, res) => {
+      res.sendfile(path.resolve(__dirname), "../client", "build", "index.html")
+   });
+}
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
