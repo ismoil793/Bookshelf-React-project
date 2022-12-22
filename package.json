@@ -21,7 +21,7 @@
     "concurrently": "^5.1.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "moment-js": "^1.1.15",
     "mongoose": "^5.9.9"
   }
